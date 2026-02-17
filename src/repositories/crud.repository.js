@@ -1,19 +1,16 @@
 const {Logger}=require("../config/index")
 
-class CrudRepository {
+class CrudRepository{
     constructor(model){
         this.model=model;
     }
 
     async create(data){
-        try {
-            const result = await this.model.create(data);
-            Logger.info(`Created new ${this.model.name}: ${JSON.stringify(result)}`);
-            return result;
-        } catch (error) {
-            Logger.error(`Error creating ${this.model.name}: ${error.message}`);
-            throw error;
-        }
+        
+        const result = await this.model.create(data);
+        Logger.info(`Created new ${this.model.name}: ${JSON.stringify(result)}`);
+        return result;
+        
     }
 
     async destroy(data){
